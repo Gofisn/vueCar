@@ -1,0 +1,28 @@
+.home {
+	width: 100%;
+	height: 100%;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+.home .home_box{
+	width: 100%;
+	height: 100%;
+}
+.loading{
+	margin-top: 50px;
+}
+.loadMore_data{
+	color: #999;
+	text-align: center;
+	margin-top: 20px;
+}
+.detail-fade-enter-active,
+.detail-fade-leave-active{
+	transition: all .2s;
+}
+.detail-fade-enter,
+.detail-fade-leave-to{
+	opacity: 0;
+	transform: translateX(100%);
+	height: 0;
+}

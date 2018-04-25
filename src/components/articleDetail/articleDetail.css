@@ -1,0 +1,59 @@
+.detailBox{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: #fff;
+	padding: 0;
+	box-sizing: border-box;
+	overflow: auto;
+}
+.detailBox .head{
+	font-size: 20px;
+	width: 100%;
+	background: #333;
+	height: 40px;
+	position: fixed;
+	text-align: center;
+	color: #fff;
+	line-height: 40px;
+}
+.detailBox .head .back{
+	font-size: 20px;
+	color: #fff;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top:0;
+	left: 5px;
+	
+}
+.detailBox .cnt{
+	margin-top: 40px;
+	padding: 20px;
+}
+.detailBox .title{
+	font-size: 22px;
+	color: #333;
+	margin-bottom: 10px;
+}
+.detailBox .dtl .source{
+color: #666;
+}
+.detailBox .content{
+	margin-top: 10px;
+	overflow: auto;
+	font-size: 18px;
+	line-height: 30px;
+	color: #333;
+}
+.detailBox .content4 li{
+	font-size: 18px;
+	line-height: 30px;
+	color: #333;
+}
+.detailBox .content img{
+	width: 100%;
+	margin: 10px 0;
+}

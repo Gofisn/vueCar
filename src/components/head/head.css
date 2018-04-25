@@ -1,0 +1,108 @@
+.head {
+  background: #333;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.head .input {
+  background: rgba(255, 255, 255, .2);
+  border: none;
+  line-height: 26px;
+  height: 26px;
+  width: 60%;
+  outline: none;
+  border-radius: 2px;
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  -webkit-appearance: none;
+}
+
+.head .search {
+  font-size: 20px;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 13px;
+  left: 21%;
+}
+
+.head .menuline {
+  color: #fff;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 2%;
+}
+
+.head .menu_list {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.menu_list .content {
+	width: 80%;
+	height: 280px;
+	background: #fff;
+	position: absolute;
+	top: 60px;
+	right: 2%;
+}
+.menu_list .content .triangle{
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	top: -20px;
+	right: 3%;
+	border: 10px solid #eee;
+	border-width: 10px;
+	border-color: transparent transparent #ddd transparent;
+	z-index: 999999
+}
+.menu_list .content .title{
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 30px;
+	height: 30px;
+	padding: 5px 0;
+	background: #ddd;
+	color: #333;
+}
+.content .title .home{
+	font-size: 26px;
+	color: #f90;
+	width:26px;
+	height: 26px;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 5px;
+}
+.head .menu_list .item{
+	font-size: 0;
+	-webkit-text-size-adjust:none;
+	text-align: left;
+}
+.head .menu_list .item a{
+	display: inline-block;
+	width: 33.3%;
+	box-sizing: border-box;
+	font-size: 16px;
+	color: #666;
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	height: 40px;
+	line-height: 40px;
+}
+.head .menu_list .item a:nth-child(3n){
+	border-right: none;
+}
