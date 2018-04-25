@@ -12,9 +12,9 @@
 				<li class="loadMore_data">{{loadMoreData}}</li>
 			</ul>
 		</scroll>
-		<transition name="detail-fade" mode="out-in">
-			<detail :detailData="detailData" @hidenDetail="detailData=null"></detail>
-		</transition>
+		
+		<detail :detailData="detailData" @hidenDetail="detailData=null"></detail>
+		
 		
 	</div>
 </template>

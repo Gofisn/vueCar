@@ -16,12 +16,3 @@
 	text-align: center;
 	margin-top: 20px;
 }
-.detail-fade-enter-active,
-.detail-fade-leave-active{
-	transition: all 1s;
-}
-.detail-fade-enter,
-.detail-fade-leave-to{
-	opacity: 0;
-	transform: translateX(100%);
-}

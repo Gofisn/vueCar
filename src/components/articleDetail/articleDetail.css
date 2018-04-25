@@ -57,3 +57,12 @@ color: #666;
 	width: 100%;
 	margin: 10px 0;
 }
+.detail-fade-enter-active,
+.detail-fade-leave-active{
+	transition: all .2s;
+}
+.detail-fade-enter,
+.detail-fade-leave-to{
+	opacity: 0;
+	transform: translateX(100%);
+}
