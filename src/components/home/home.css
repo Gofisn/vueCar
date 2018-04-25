@@ -18,11 +18,10 @@
 }
 .detail-fade-enter-active,
 .detail-fade-leave-active{
-	transition: all .2s;
+	transition: all 1s;
 }
 .detail-fade-enter,
 .detail-fade-leave-to{
 	opacity: 0;
 	transform: translateX(100%);
-	height: 0;
 }
