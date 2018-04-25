@@ -43,8 +43,11 @@
   	 <ul class="ruler">
         <li v-for="(item,index) in sortCarArr" @click="jumpClassify(index)">{{item.pinyin}}</li>   
     </ul>
-    <div>
-      
+
+       <brand :brandList="brandArr" @closeBrand="brandArr=[]"></brand>
+    </div>
+    
+  </div>
     </div>
  </div>
 </template>
@@ -52,25 +55,28 @@
 <script>
 import scroll from '@/components/scroll/scroll.vue'
 import loading from '@/components/loading/loading.vue'
-import {getSelectData} from '@/common/js/ajax.js'
+import brand from '@/components/brandList/brandList.vue'
+import {getSelectData,getBrandList} from '@/common/js/ajax.js'
 export default {
 	data(){
 		return {
 			carBrand:{},
       selectSort:{},
       selectDataAll:[],
-      sortCarArr:[]
+      sortCarArr:[],
+      brandList:[],
+      brandArr:[]
 		}
 	},
 	created(){
     this.loadData();
 	},
-    beforeRouteEnter:(to,from,next)=>{
+  beforeRouteEnter:(to,from,next)=>{
 	 next(vm=>{
 	  	vm.$root.eventHub.$emit('changeRoute',to)
 	  });
-    },
-    methods:{
+  },
+  methods:{
     	loadData(){
         getSelectData(null,(res)=>{
           var data=res.data;
@@ -81,7 +87,11 @@ export default {
         })
     	},
       chooseCarbrand(data){
-        console.log(data)
+        getBrandList({brand_id:data.brand_id},(res)=>{
+          console.log(res)
+          this.brandList=res.data;
+          this.sortBrandList()
+        })
       },
       sortList(list){
         // 得到对象
@@ -112,12 +122,34 @@ export default {
       },
       jumpClassify(index){
         this.$refs.selectBox.scrollToElement(this.$refs.carLists[index],20)
+      },
+      sortBrandList(){
+        let listObj={}
+        this.brandList.forEach((item,index,arr)=>{
+          if(item.type=='1002'){
+            const key=item.info.sub_brand_name;
+            if(!listObj[key]){
+              listObj[key]={
+                title:key,
+                lists:[]
+              }
+            }
+            listObj[key].lists.push(item.info)
+          }
+        })
+        let listArr=[];
+        for (let key in listObj){
+          listArr.push(listObj[key])
+        }
+        this.brandArr=listArr;
       }
-    },
-    components:{
+
+  },
+  components:{
       loading,
-      scroll
-    }
+      scroll,
+      brand
+  }
 }
 </script>
 
