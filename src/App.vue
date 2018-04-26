@@ -7,7 +7,7 @@
           <router-link to="/home">首页</router-link>  
         </li>
         <li  class="item" >
-          <router-link to="/select" >选车</router-link>  
+          <router-link to="/select" >select</router-link>  
         </li>
         <li class="item">
           <router-link to="/carFriends">车友圈</router-link> 
