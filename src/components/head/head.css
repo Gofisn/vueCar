@@ -5,13 +5,14 @@
   text-align: center;
   width: 100%;
 }
+
 .head .back{
-	font-size: 20px;
+	font-size: 22px;
 	color: #fff;
 	width: 40px;
 	height: 40px;
 	position: absolute;
-	top:0;
+	top:2px;
 	left: 5px;
 	line-height: 40px;
 }
@@ -32,8 +33,8 @@
 .head .search {
   font-size: 20px;
   color: #fff;
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   position: absolute;
   top: 13px;
   left: 21%;
@@ -41,15 +42,19 @@
 
 .head .menuline {
   color: #fff;
-  font-size: 24px;
+  font-size: 28px;
   position: absolute;
   top: 0px;
   right: 2%;
   line-height: 40px;
 }
 .head .title{
-	line-height: 40px;
-
+	line-height: 30px;
+	font-size: 20px;
+	background: #333;
+	height: 30px;
+	text-align: center;
+	color: #fff;
 }
 .head .menu_list {
   width: 100%;

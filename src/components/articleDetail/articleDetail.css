@@ -10,24 +10,9 @@
 	overflow: auto;
 }
 .detailBox .head{
-	font-size: 20px;
-	width: 100%;
-	background: #333;
-	height: 40px;
 	position: fixed;
-	text-align: center;
-	color: #fff;
-	line-height: 40px;
-}
-.detailBox .head .back{
-	font-size: 20px;
-	color: #fff;
-	width: 40px;
-	height: 40px;
-	position: absolute;
-	top:0;
-	left: 5px;
-	
+	top: 0;
+	left: 0;
 }
 .detailBox .cnt{
 	margin-top: 40px;
