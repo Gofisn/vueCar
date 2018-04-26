@@ -4,7 +4,7 @@
     <div class="router_box" ref="routerBox">
       <ul ref="navigCont">
         <li class="item">
-          <router-link to="/home">首页</router-link>  
+          <router-link to="/home">home</router-link>  
         </li>
         <li  class="item" >
           <router-link to="/select" >选车</router-link>  
