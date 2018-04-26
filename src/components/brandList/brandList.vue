@@ -1,8 +1,8 @@
 <template>
-<transition name="bandfade">
 	<div v-if="brandList.length" class="brand_box" @click.self="closeBrand">
-			<div v-if="brandList.length" class="brand_list">
-				<ul v-for="items in brandList">
+        <transition name="bandfade" >
+			<div v-if="sortBrandList.length" class="brand_list" ref="tran">
+				<ul v-for="items in sortBrandList">
 					<li>
 						<div class="list_title">{{items.title}}</div>
 						<ul>
@@ -24,12 +24,16 @@
 					
 				</ul>
 			</div>
+        </transition>	
 	</div>
-</transition>	
 </template>
 <script>
 export default{
-	
+	data(){
+		return {
+			sortBrandList:[]
+		}
+   },
 	props:{
 		brandList:{
 			tpye:Array,
@@ -38,8 +42,38 @@ export default{
 	},
 	methods:{
 		closeBrand(){
-			this.$emit('closeBrand')
-		}
+			this.sortBrandList=[];
+			clearTimeout(this.timer)
+			this.timer=setTimeout(()=>{
+				this.$emit('closeBrand')
+			},500)
+		},
+	},
+	watch:{
+		brandList(){
+	        let listObj={}
+	        this.brandList.forEach((item,index,arr)=>{
+	          if(item.type=='1002'){
+	            const key=item.info.sub_brand_name;
+	            if(!listObj[key]){
+	              listObj[key]={
+	                title:key,
+	                lists:[]
+	              }
+	            }
+	            listObj[key].lists.push(item.info)
+	          }
+	        })
+	        let listArr=[];
+	        for (let key in listObj){
+	          listArr.push(listObj[key])
+	        }
+	        clearTimeout(this.timer)
+	       this.timer= setTimeout(()=>{
+	           this.sortBrandList=listArr;
+	        },20)
+	    }
+
 	}
 }
 </script>

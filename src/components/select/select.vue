@@ -44,7 +44,7 @@
         <li v-for="(item,index) in sortCarArr" @click="jumpClassify(index)">{{item.pinyin}}</li>   
     </ul>
 
-       <brand :brandList="brandArr" @closeBrand="brandArr=[]"></brand>
+       <brand :brandList="brandList" @closeBrand="brandList=[]"></brand>
     </div>
     
   </div>
@@ -65,7 +65,6 @@ export default {
       selectDataAll:[],
       sortCarArr:[],
       brandList:[],
-      brandArr:[]
 		}
 	},
 	created(){
@@ -88,7 +87,7 @@ export default {
     	},
       chooseCarbrand(data){
         getBrandList({brand_id:data.brand_id},(res)=>{
-          console.log(res)
+          // console.log(res)
           this.brandList=res.data;
           this.sortBrandList()
         })
@@ -122,26 +121,6 @@ export default {
       },
       jumpClassify(index){
         this.$refs.selectBox.scrollToElement(this.$refs.carLists[index],20)
-      },
-      sortBrandList(){
-        let listObj={}
-        this.brandList.forEach((item,index,arr)=>{
-          if(item.type=='1002'){
-            const key=item.info.sub_brand_name;
-            if(!listObj[key]){
-              listObj[key]={
-                title:key,
-                lists:[]
-              }
-            }
-            listObj[key].lists.push(item.info)
-          }
-        })
-        let listArr=[];
-        for (let key in listObj){
-          listArr.push(listObj[key])
-        }
-        this.brandArr=listArr;
       }
 
   },

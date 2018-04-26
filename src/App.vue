@@ -31,7 +31,11 @@
     </div>
     
     <div class="appContent">
-    <router-view></router-view>
+      <transition name="fade-main">
+        <router-view :key="key"></router-view>
+      </transition>
+    
+
     </div>
   </div>
 </template>
@@ -96,7 +100,12 @@ export default {
       this.$refs.navigCont.style.width=nav_width+'px';
       // this.navigation.scrollTo(-30,0,300)
     }
-  }
+  },
+  computed: {
+        key() {
+            return this.$route.path.replace(/\//g, '_')
+        }
+   }
 }
 </script>
 
@@ -166,5 +175,15 @@ export default {
   height: 1px;
   width: 20px;
   transform: translateX(-50%);
+}
+
+.fade-main-enter-active,
+.fade-main-leave-active {
+  transition: all .2s;
+}
+.fade-main-enter,
+.fade-main-leave-to{
+  opacity: 0;
+  transform: translateX(100%);
 }
 </style>

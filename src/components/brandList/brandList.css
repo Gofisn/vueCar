@@ -59,9 +59,9 @@
 }
 .bandfade-enter-active,
 .bandfade-leave-active {
-	transition: all 2s;
+	transition: all .3s linear;
 }
 .bandfade-enter,
 .bandfade-leave-to{
-	transform: translateX(80%);
+	transform: translateX(100%);
 }
