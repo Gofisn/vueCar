@@ -9,6 +9,7 @@ import ranking from '@/components/ranking/ranking.vue'
 import service from '@/components/service/service.vue'
 import word from '@/components/word/word.vue'
 import video from '@/components/video/video.vue'
+import carSeries from '@/components/carSeries/carSeries.vue'
 
 Vue.prototype.$http = axios
 Vue.use(Router, axios)
@@ -51,5 +52,6 @@ export default new Router({
     path: '/video',
     name: 'video',
     component: video
-  }]
+  }
+  ]
 })

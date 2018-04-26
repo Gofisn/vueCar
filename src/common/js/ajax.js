@@ -29,3 +29,17 @@ export function getBrandList(data,callback) {
 		callback(res.data)
 	})
 }
+// 车友圈 series信息
+export function getSeriesObj(data,callback) {
+	let url=process.env.API_HOST+'car_page/m/v1/get_head/';
+	axios.get(url,{params:data}).then((res)=>{
+		callback(res.data)
+	})
+}
+// 车友圈 series 在售及停售信息
+export function getSeriesLine(data,callback) {
+	let url=process.env.API_HOST+'car_page/m/v1/series_all_json/';
+	axios.get(url,{params:data}).then((res)=>{
+		callback(res.data)
+	})
+}

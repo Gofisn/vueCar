@@ -1,54 +1,51 @@
 <template>
   <div class="select">
-    <scroll class="selectBox" :data="selectDataAll" ref="selectBox">
-        <div>
-          <ul class="car_brand" v-if="carBrand.brand">
-            <li v-for="item in carBrand.brand" class="brand_item" @click="chooseCarbrand(item)">
-              <img v-lazy="item.image_url">
-              <span>{{item.brand_name}}</span>
-            </li>
-          </ul>
-          <ul class="car_series" v-if="carBrand.series">
-            <li v-for="item in carBrand.series" class="series_item">
-              <img v-lazy="item.cover_image">
-              <div>{{item.series_name}}</div>
-            </li>
-          </ul>
-          <div class="select_sort" v-if="selectSort.data">
-            {{selectSort.data.params_select_car_bar.expand_text}}
-            <i class="iconfont icon-right right"></i>
+      <scroll class="selectBox" :data="selectDataAll" ref="selectBox">
+          <div>
+            <ul class="car_brand" v-if="carBrand.brand">
+              <li v-for="item in carBrand.brand" class="brand_item" @click="chooseCarbrand(item)">
+                <img v-lazy="item.image_url">
+                <span>{{item.brand_name}}</span>
+              </li>
+            </ul>
+            <ul class="car_series" v-if="carBrand.series">
+              <li v-for="item in carBrand.series" class="series_item" @click="seriesId=item.series_id">
+                <img v-lazy="item.cover_image">
+                <div>{{item.series_name}}</div>
+              </li>
+            </ul>
+            <div class="select_sort" v-if="selectSort.data">
+              {{selectSort.data.params_select_car_bar.expand_text}}
+              <i class="iconfont icon-right right"></i>
+            </div>
+            <ul v-if="sortCarArr.length">
+              <li v-for="list in sortCarArr" ref="carLists">
+                <div class="car_head">
+                  {{list.pinyin}}
+                </div>
+                <ul>
+                  <li v-for="item in list.items"  class="car_item" @click="chooseCarbrand(item)">
+                    <img v-lazy="item.image_url" alt="" class="car_logo">
+                    <div class="car_name">
+                      {{item.brand_name}}
+                      <span v-if="item.dealer_tag==1" class="price_reduct">降价</span>
+                      <span v-if="item.dealer_tag==2" class="price_hort">热门</span>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <div v-show="sortCarArr.length==0" class="loading">
+              <loading></loading>
+            </div>
           </div>
-          <ul v-if="sortCarArr.length">
-            <li v-for="list in sortCarArr" ref="carLists">
-              <div class="car_head">
-                {{list.pinyin}}
-              </div>
-              <ul>
-                <li v-for="item in list.items"  class="car_item">
-                  <img v-lazy="item.image_url" alt="" class="car_logo">
-                  <div class="car_name">
-                    {{item.brand_name}}
-                    <span v-if="item.dealer_tag==1" class="price_reduct">降价</span>
-                    <span v-if="item.dealer_tag==2" class="price_hort">热门</span>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <div v-show="sortCarArr.length==0" class="loading">
-            <loading></loading>
-          </div>
-        </div>
-    </scroll>
-  	 <ul class="ruler">
-        <li v-for="(item,index) in sortCarArr" @click="jumpClassify(index)">{{item.pinyin}}</li>   
-    </ul>
+      </scroll>
+    	 <ul class="ruler">
+          <li v-for="(item,index) in sortCarArr" @click="jumpClassify(index)">{{item.pinyin}}</li>   
+       </ul>
 
        <brand :brandList="brandList" @closeBrand="brandList=[]"></brand>
-    </div>
-    
-  </div>
-    </div>
+      <series :seriesId="seriesId"></series>
  </div>
 </template>
 
@@ -56,7 +53,8 @@
 import scroll from '@/components/scroll/scroll.vue'
 import loading from '@/components/loading/loading.vue'
 import brand from '@/components/brandList/brandList.vue'
-import {getSelectData,getBrandList} from '@/common/js/ajax.js'
+import series from '@/components/carSeries/carSeries.vue'
+import {getSelectData,getBrandList,getSeriesObj,getSeriesLine} from '@/common/js/ajax.js'
 export default {
 	data(){
 		return {
@@ -65,16 +63,12 @@ export default {
       selectDataAll:[],
       sortCarArr:[],
       brandList:[],
+      seriesId:0
 		}
 	},
 	created(){
     this.loadData();
 	},
-  beforeRouteEnter:(to,from,next)=>{
-	 next(vm=>{
-	  	vm.$root.eventHub.$emit('changeRoute',to)
-	  });
-  },
   methods:{
     	loadData(){
         getSelectData(null,(res)=>{
@@ -89,7 +83,6 @@ export default {
         getBrandList({brand_id:data.brand_id},(res)=>{
           // console.log(res)
           this.brandList=res.data;
-          this.sortBrandList()
         })
       },
       sortList(list){
@@ -127,7 +120,8 @@ export default {
   components:{
       loading,
       scroll,
-      brand
+      brand,
+      series
   }
 }
 </script>

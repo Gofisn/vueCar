@@ -44,11 +44,6 @@ import {getHomeData,getHomeDetail} from '@/common/js/ajax.js'
 		created(){
 			this.loadData();
 		},
-		beforeRouteEnter:(to,from,next)=>{
-	     next(vm=>{
-	     	vm.$root.eventHub.$emit('changeRoute',to)
-	     });
-	  	},
 		methods:{
 			loadData(time){
 

@@ -55,13 +55,17 @@ export default {
     'v-head':head
   },
   created(){
-    // this.goMiddle();
-    this.$root.eventHub.$on('changeRoute',this.goMiddle);
     this.width=document.body.clientWidth;
     this.$nextTick(()=>{
      this._initNavigation();
     })
   },
+  watch: {
+    '$route' (to, from) {
+      this.goMiddle(to)
+    }
+  },
+
   methods:{
     goMiddle(to){
       // console.log(to.name);
