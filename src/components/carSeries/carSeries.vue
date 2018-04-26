@@ -1,9 +1,10 @@
 <template>
-	<div v-if="seriesLine" class="series_box">
-		
+	<div v-if="seriesObject" class="series_box">
+		<v-head :backBtn="true" :title="seriesObject.concern_obj.name"></v-head>
 	</div>
 </template>
 <script>
+import head from '@/components/head/head.vue'
 import {getSeriesObj,getSeriesLine} from '@/common/js/ajax.js'
 	export default{
 		data(){
@@ -11,6 +12,9 @@ import {getSeriesObj,getSeriesLine} from '@/common/js/ajax.js'
 				seriesLine:null,
 				seriesObject:null
 			}
+		},
+		components:{
+			'v-head':head
 		},
 		props:{
 			seriesId:{

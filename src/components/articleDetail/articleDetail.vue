@@ -1,7 +1,7 @@
 <template>
 	<transition name="detail-fade">
 		<div v-if="detailData" class="detailBox" >
-			<v-head :backBtn="true" :title="title" @hidenDetail="hidenDetail"></v-head>
+			<v-head :backBtn="true" :title="title" @hiden="hidenDetail"></v-head>
 			<div class="cnt">
 				<div class="title">
 				{{detailData.title}}
