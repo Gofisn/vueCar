@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-head></v-head>
+    <v-head :showSearch="true"></v-head>
     <div class="router_box" ref="routerBox">
       <ul ref="navigCont">
         <li class="item">

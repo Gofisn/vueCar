@@ -1,8 +1,14 @@
 <template>
   <div class="head">
-  	<div class="">
-  		<input type="text" class="input" placeholder="搜你所想">
-	    <i class="iconfont icon-sousuo search"></i>
+  	<div class="head_line">
+  		<i class="iconfont icon-back back"  @click="hiddenDetail" v-show="backBtn"></i>
+  		<div v-show="showSearch">
+  			<input type="text" class="input" placeholder="搜你所想">
+	        <i class="iconfont icon-sousuo search"></i>
+  		</div>
+  		<span v-show="title" class="title">
+  			{{title}}
+  		</span>
 	    <i class="iconfont icon-serialnumber menuline" @click="toggleMenu"></i>
   	</div>
     
@@ -45,10 +51,28 @@ export default {
   		menu:false
   	} 
   },
+  props:{
+  	showSearch:{
+  		type:Boolean,
+  		default:false
+  	},
+  	title:{
+  		type:String,
+  		default:''
+  	},
+  	backBtn:{
+  		type:Boolean,
+  		default:false
+  	}
+
+  },
   methods:{
   	toggleMenu(){
   		this.menu=!this.menu;
-  	}
+  	},
+	hiddenDetail(){
+	  this.$emit('hidenDetail')
+	}
   }
 }
 </script>

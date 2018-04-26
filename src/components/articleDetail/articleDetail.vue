@@ -1,10 +1,7 @@
 <template>
 	<transition name="detail-fade">
 		<div v-if="detailData" class="detailBox" >
-			<div class="head">
-				<i class="iconfont icon-back back"  @click="hiddenDetail"></i>
-				<span>文章详情</span>
-			</div>
+			<v-head :backBtn="true" :title="title" @hidenDetail="hidenDetail"></v-head>
 			<div class="cnt">
 				<div class="title">
 				{{detailData.title}}
@@ -32,7 +29,13 @@
 	</transition>
 </template>
 <script>
+import head from '@/components/head/head.vue'
 	export default{
+		data(){
+			return{
+				title:"文章详情"
+			}
+		},
 		props:{
 			detailData:{
 				type:Object,
@@ -43,7 +46,7 @@
 			detailImg(img){
 				return 'http://p9.pstatp.com/large/'+img;
 			},
-			hiddenDetail(){
+			hidenDetail(){
 				this.$emit('hidenDetail')
 			}
 		},
@@ -63,7 +66,10 @@
 					return false;
 				}
 			}
-		}
+		},
+		  components:{
+		    'v-head':head
+		  }
 	}
 </script>
 <style scoped src="./articleDetail.css"></style>
