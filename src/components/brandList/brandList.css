@@ -43,14 +43,14 @@
 	line-height: 20px;
 	color: #FF9100; 
 }
-.content_box .name .price_reduct{
+.price_reduct{
 	color: #406599;
 	border: 1px solid #406599;
 	border-radius: 2px;
 	font-size: 12px;
 	padding: 0px 2px;
 }
-.content_box .name .price_hort{
+.price_hort{
 	color: #F85959;
 	border: 1px solid #F85959;
 	border-radius: 2px;

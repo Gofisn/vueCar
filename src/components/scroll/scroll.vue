@@ -1,6 +1,6 @@
 <template>
 	<div class="scroll_box" ref="wrapper">
-		<slot></slot>
+		<slot ref="sliderGroup"></slot>
 	</div>
 </template>
 <script>
@@ -13,6 +13,15 @@
        * 2 滚动的时候实时派发scroll事件，不会截流。
        * 3 除了实时派发scroll事件，在swipe的情况下仍然能实时派发scroll事件
        */
+       loop:{
+        type:Boolean,
+        default:false
+       },
+       autoPlay:{
+        type:Boolean,
+        default:false
+       },
+
       probeType: {
         type: Number,
         default: 1
@@ -77,10 +86,27 @@
     mounted() {
       // 保证在DOM渲染完毕后初始化better-scroll
       setTimeout(() => {
+        if(this.scrollX){
+           // this._setSliderWidth();
+        }
         this._initScroll()
       }, 20)
     },
     methods: {
+      _setSliderWidth(){
+        this.children=this.$refs.sliderGroup.children;
+        let width=0;
+        let sliderWidth=this.$refs.wrapper.clientWidth;
+        for (let i=0;i<this.children.length;i++){
+          let child=this.children[i];
+          child.style.width=clientWidth+'px';
+          width+=child;
+        }
+        if(this.loop){
+          width+=2*sliderWidth;
+        }
+        this.$refs.sliderGroup.style.width=width+'px';
+      },
       _initScroll() {
         if (!this.$refs.wrapper) {
           return
@@ -89,7 +115,13 @@
         this.scroll = new BScroll(this.$refs.wrapper, {
           probeType: this.probeType,
           click: this.click,
-          scrollX: this.scrollX
+          scrollX: this.scrollX,
+          snap:{
+            loop:this.loop,
+            threshold:0.1,
+            speed:400
+          }
+
         })
        
         this.scroll.on('scroll', (pos) => {

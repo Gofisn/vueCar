@@ -148,6 +148,7 @@ export default {
   padding: 10px 0px;
   background: #333;
   box-sizing: border-box; 
+  border-top: 1px solid #ccc;
 }
 .router_box ul{
   font-size: 0;

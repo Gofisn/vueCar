@@ -4,5 +4,189 @@
 	height: 100%;
 	left: 0;
 	top: 0;
-	background: #ccc;
+	background: #fff;
+	overflow: auto;
+}
+.series_box .head{
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.series_box .series_head{
+	margin-top: 40px;
+	position: relative;
+	z-index: -1;
+	width: 100%;
+	overflow: hidden;
+}
+.series_head .img_box{
+	text-align: center;
+	background: linear-gradient(180deg, #7b7b7b, #6a6a6a 25%, #424242 70%, #636363 75%, #adadad 85%, #7b7b7b);
+}
+.series_head .img_box_c img{
+	width: 100%;
+}
+.series_head .img_box img{
+	width: 90%;
+}
+.series_head .series_cnt{
+	position: absolute;
+	top: 10px;
+	left: 12px;
+	color: #fff;
+	font-size: 14px;
+}
+.series_cnt .name{
+	font-size: 16px;
+	line-height: 26px;
+}
+.series_cnt div{
+	line-height: 16px;
+}
+.series_head .logos{
+	position: absolute;
+	top: 20px;
+	right: 14px;
+}
+.series_head .logos .item{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: rgba(0,0,0,.7);
+	color: #fff;
+	text-align: center;
+	margin: 5px 0;
+}
+.series_head .logos .item img{
+	width: 20px;
+	margin-top: 5px;
+}
+.series_head .logos .item span{
+	font-size: 10px;
+	display: block;
+}
+.series_box .comper{
+	overflow-x: scroll;
+	margin: 0;
+	padding: 0;
+	border-bottom: 5px solid #eee;
+}
+.series_box .comper_box .item{
+   display: inline-block;
+   width: 230px;
+   margin: 5px;
+   padding: 0;
+   border-right: 1px solid #ccc;
+   box-sizing: border-box;
+}
+.series_box .comper_box .image{
+	width: 60px;
+	display: inline-block;
+	vertical-align: top;
+}
+.series_box .comper_box .cont{
+	display: inline-block;
+	width: 100px;
+	font-size: 14px;
+	color: #666;
+	vertical-align: top;
+}
+.series_box .comper_box .cont div{
+	line-height: 20px;
+	height: 20px;
+	overflow: hidden;
+}
+.series_box .comper_box .comp{
+	width: 50px;
+	display: inline-block;
+	font-size: 12px;
+	margin-top: 10px;
+	line-height: 26px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	text-align: center;
+	border-radius: 13px;
+}
+.series_line{
+	width: 100%;
+	overflow: hidden;
+}
+.series_line .line_head{
+	border-bottom: 1px solid #efefef;
+	line-height: 26px;
+	padding: 5px;
+
+}
+.series_line .line_head .item{
+	position: relative;
+	padding: 0 5px;
+	font-size: 14px;
+	color: #444;
+	z-index: 0;
+}
+.series_line .line_head .active:after{
+	border-bottom: 3px solid #fc0;
+  position: absolute;
+  left: 50%;
+  right: 0;
+  bottom: -6px;
+  content: '';
+  height: 1px;
+  width: 20px;
+  transform: translateX(-50%);
+}
+.line_cont li{
+	border-bottom: 1px solid #eee;
+	padding: 5px;
+	margin: 5px;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+}
+.line_cont .cont{
+	flex: 1;
+	line-height: 22px;
+}
+.line_cont .cont .name{
+	font-size: 16px;
+	color: #333;
+}
+.line_cont .cont .prices{
+	color: #999;
+}
+.line_cont .cont .dealer_price{
+	color: #FF9100;
+	font-size: 18px;
+}
+.line_cont .cont .price{
+	text-decoration: line-through;
+}
+.line_cont .nocont{
+	color: #999;
+}
+.line_cont .ask{
+	border: 1px solid #2A90D7;
+	color: #2A90D7;
+	margin:0 5px 0 15px;
+	display: inline-block;
+	font-size: 14px;
+	width: 60px;
+	height: 26px;
+	line-height: 26px;
+	text-align: center;
+	border-radius: 5px;
+}
+.price_reduct{
+	color: #406599;
+	border: 1px solid #406599;
+	border-radius: 2px;
+	font-size: 12px;
+	padding: 0px 2px;
+}
+.price_hort{
+	color: #F85959;
+	border: 1px solid #F85959;
+	border-radius: 2px;
+	font-size: 12px;
+	padding: 0px 2px;
 }

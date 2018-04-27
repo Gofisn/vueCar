@@ -6,7 +6,7 @@
 					<li>
 						<div class="list_title">{{items.title}}</div>
 						<ul>
-							<li v-for="item in items.lists" class="list_content">
+							<li v-for="item in items.lists" class="list_content" @click="seriesId=item.series_id">
 								<div class="img_box">
 								  <img v-lazy="item.image_url">
 								</div>
@@ -25,13 +25,16 @@
 				</ul>
 			</div>
         </transition>	
+        <series :seriesId="seriesId" @hiden="hiddenSeries"></series>
 	</div>
 </template>
 <script>
+import series from '@/components/carSeries/carSeries.vue'
 export default{
 	data(){
 		return {
-			sortBrandList:[]
+			sortBrandList:[],
+			seriesId:0
 		}
    },
 	props:{
@@ -40,14 +43,22 @@ export default{
 			default:[]
 		}
 	},
+	components:{
+		series
+	},
 	methods:{
 		closeBrand(){
 			this.sortBrandList=[];
+
+			this.seriesId=0;
 			clearTimeout(this.timer)
 			this.timer=setTimeout(()=>{
 				this.$emit('closeBrand')
 			},500)
 		},
+	    hiddenSeries(){
+	        this.seriesId=0;
+	    }
 	},
 	watch:{
 		brandList(){

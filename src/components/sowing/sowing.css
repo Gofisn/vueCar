@@ -1,0 +1,47 @@
+ .slide {
+   min-height: 1px;
+   position: relative;
+ }
+
+ .slide .slide-group {
+   position: relative;
+   overflow: hidden;
+   white-space: nowrap;
+ }
+
+ .slide-group .slide-item {
+   float: left;
+   box-sizing: border-box;
+   overflow: hidden;
+   text-align: center;
+  
+ }
+ .slide-group .slide-item img {
+   display: block;
+   width: 100%;
+ }
+
+ .dots {
+   position: absolute;
+   left: 0;
+   bottom: 5px;
+   transform: translateZ(1px);
+   text-align: center;
+   font-size: 0;
+   width: 100%;
+ }
+
+ .dot {
+   display: inline-block;
+   margin: 3px;
+   width: 8px;
+   height: 8px;
+   border-radius: 50%;
+   background: #ccc;
+ }
+
+ .dots .active {
+   width: 20px;
+   border-radius: 5px;
+   background: #ff0;
+ }

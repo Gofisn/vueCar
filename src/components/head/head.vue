@@ -71,6 +71,7 @@ export default {
   		this.menu=!this.menu;
   	},
 	hidden(){
+    console.log('hidden')
 	  this.$emit('hiden')
 	}
   }

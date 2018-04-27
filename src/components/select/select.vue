@@ -45,7 +45,7 @@
        </ul>
 
        <brand :brandList="brandList" @closeBrand="brandList=[]"></brand>
-      <series :seriesId="seriesId"></series>
+      <series :seriesId="seriesId" @hiden="hiddenSeries"></series>
  </div>
 </template>
 
@@ -114,6 +114,9 @@ export default {
       },
       jumpClassify(index){
         this.$refs.selectBox.scrollToElement(this.$refs.carLists[index],20)
+      },
+      hiddenSeries(){
+        this.seriesId=0;
       }
 
   },
