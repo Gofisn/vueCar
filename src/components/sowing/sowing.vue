@@ -5,7 +5,7 @@
       </slot>
     </div>
     <div v-if="showDot" class="dots">
-      <span class="dot" :class="{active: currentPageIndex === index }" v-for="(item, index) in dots">.</span>
+      <span class="dot" :class="{active: currentPageIndex === index }" v-for="(item, index) in dots"></span>
     </div>
   </div>
 </template>
@@ -131,8 +131,6 @@
           addClass(child, 'slide-item')
           child.style.width = slideWidth + 'px'
           width += slideWidth;
-        let height=  child.clientHeight;
-        console.log(height)
         }
         if (this.loop && !isResize) {
           width += 2 * slideWidth
@@ -174,7 +172,7 @@
         }
       },
       _initDots() {
-        this.dots = new Array(this.children.length)
+        this.dots = new Array(this.children.length);
       },
       _play() {
         clearTimeout(this.timer)
