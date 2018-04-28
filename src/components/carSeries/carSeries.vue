@@ -123,7 +123,7 @@ import {addClass} from '@/common/js/dom.js'
 					getSeriesObj({series_id:this.seriesId},(res)=>{
 			          let headInfo=res.concern_obj.head_info;
 			          headInfo=JSON.parse(headInfo);
-			          console.log(headInfo)
+			          // console.log(headInfo)
 			          this.headList=headInfo;
 			          this.seriesObject=res;
 
@@ -138,7 +138,7 @@ import {addClass} from '@/common/js/dom.js'
 			          'series_id':this.seriesId,
 			          'req_type':'all'
 			        },(res)=>{
-			          console.log(res.data)
+			          // console.log(res.data)
 			          this.seriesLine=res.data;
 			          if(res.data.online.length){
 			          	this.lineType='online';

@@ -1,13 +1,12 @@
 <template>
   <div class="smallVideo_box" id="video_box">
-  	<div v-show="videoItems.length==0" class="loading">
-		<loading></loading>
-	</div>
-	<waterfall :line-gap="imgWidth" :watch="videoItems">
+  	<waterfall :line-gap="imgWidth" :watch="videoItems">
 	  <waterfall-slot
 	    v-for="(item, index) in videoItems"
 	    :width="item.info.image_list[0].width"
 	    :height="item.info.image_list[0].height"
+	    :order="index"
+	    :key="item.unique_id"
 	  >
 	  <div class="item" :item="item">
 	  	<img :src="item.info.image_list[0].url" class="item_img">
@@ -24,65 +23,48 @@
 	  </div>
 	  </waterfall-slot>
 	</waterfall>
-	<div class="load_more">{{loadMoreData}}</div>
-  	
  </div>
 </template>
 
 <script>
 import {getSmallVideo} from '@/common/js/ajax.js'
 import waterfall from 'vue-waterfall/lib/waterfall'
-import loading from '@/components/loading/loading.vue'
 import waterfallSlot from 'vue-waterfall/lib/waterfall-slot'
 export default {
 	data(){
 		return{
 			videoItems:[],
 			imgWidth:0,
-			line:2,
-			loadMoreData:'',
-			canload:true
+			line:2
 		}
 	},
 	mounted(){
 		let scop=this;
-		scop.imgWidth=document.body.clientWidth/scop.line;
+		scop.imgWidth=document.body.clientWidth/this.line;
     	window.addEventListener('resize', () => {
-          scop.imgWidth=document.body.clientWidth/scop.line;
+          scop.imgWidth=document.body.clientWidth/this.line;
         });
     	let box=document.getElementById('video_box');
-    	let scrollTop=0;
         box.addEventListener('scroll', function () {
-            scrollTop = box.scrollTop;
+            var scrollTop = box.scrollTop;
+            console.log('top '+scrollTop)
+            console.log('innerHeight '+box.scrollHeight)
+            console.log('clientHeight '+box.clientHeight)
             if (scrollTop + box.clientHeight >= box.scrollHeight) {
-              // console.log('scroll')
-              scop.loadMoreData='加载更多...';
-              scop.loadData(scop.videoItems[scop.videoItems.length-1].info.behot_time);
+              console.log('scroll')
+              scop.loadData(scop.videoItems[scop.videoItems.length-1].info.behot_time)
             }
           })
-          let startY;
-          box.addEventListener('touchstart', function (e) {
-            startY=e.touches[0].clientY;
-          })
-          box.addEventListener('touchend', function (e) {
-            if(scrollTop<=0){
-              if(e.changedTouches[0].clientY-startY>100){
-              	if(scop.canload){
-                   scop.canload=false;
-              		scop.loadData();
-              	}
-                
-              }
-            }
-          })
+        document.addEventListener('scroll',function(e) {
+        	console.log(e)
+        })
 	},
     created(){
     	this.loadData();
     },
     components:{
     	waterfall,
-    	waterfallSlot,
-    	loading
+    	waterfallSlot
     },
     methods:{
     	loadData(time){
@@ -102,12 +84,10 @@ export default {
 				paras.max_behot_time=time;
 				paras.tt_from='load_more'
 			}else{
-				this.videoItems=[];
+				this.dataNews=[];
 			}
 
 			getSmallVideo(paras,(res)=>{
-				this.loadMoreData='';
-				this.canload=true;
 				let data=res.data;
 				if(data.length){
 					this.videoItems.push(...data)
