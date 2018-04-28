@@ -4,10 +4,11 @@
 		<loading></loading>
 	</div>
 	<waterfall :line-gap="imgWidth" :watch="videoItems">
-	  <waterfall-slot
+	  <waterfall-slot v-if="videoItems.length"
 	    v-for="(item, index) in videoItems"
 	    :width="item.info.image_list[0].width"
 	    :height="item.info.image_list[0].height"
+	    :key="item.unique_id"
 	  >
 	  <div class="item" :item="item">
 	  	<img :src="item.info.image_list[0].url" class="item_img">
@@ -30,9 +31,9 @@
 </template>
 
 <script>
-import {getSmallVideo} from '@/common/js/ajax.js'
-import waterfall from 'vue-waterfall/lib/waterfall'
+import {getVideo} from '@/common/js/ajax.js'
 import loading from '@/components/loading/loading.vue'
+import waterfall from 'vue-waterfall/lib/waterfall'
 import waterfallSlot from 'vue-waterfall/lib/waterfall-slot'
 export default {
 	data(){
@@ -105,7 +106,7 @@ export default {
 				this.videoItems=[];
 			}
 
-			getSmallVideo(paras,(res)=>{
+			getVideo(paras,(res)=>{
 				this.loadMoreData='';
 				this.canload=true;
 				let data=res.data;

@@ -113,6 +113,7 @@ export default {
         // console.log(this.sortCarArr)
       },
       jumpClassify(index){
+        console.log(index)
         this.$refs.selectBox.scrollToElement(this.$refs.carLists[index],20)
       },
       hiddenSeries(){

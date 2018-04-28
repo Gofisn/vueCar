@@ -86,27 +86,10 @@
     mounted() {
       // 保证在DOM渲染完毕后初始化better-scroll
       setTimeout(() => {
-        if(this.scrollX){
-           // this._setSliderWidth();
-        }
         this._initScroll()
       }, 20)
     },
     methods: {
-      _setSliderWidth(){
-        this.children=this.$refs.sliderGroup.children;
-        let width=0;
-        let sliderWidth=this.$refs.wrapper.clientWidth;
-        for (let i=0;i<this.children.length;i++){
-          let child=this.children[i];
-          child.style.width=clientWidth+'px';
-          width+=child;
-        }
-        if(this.loop){
-          width+=2*sliderWidth;
-        }
-        this.$refs.sliderGroup.style.width=width+'px';
-      },
       _initScroll() {
         if (!this.$refs.wrapper) {
           return
@@ -116,12 +99,6 @@
           probeType: this.probeType,
           click: this.click,
           scrollX: this.scrollX,
-          snap:{
-            loop:this.loop,
-            threshold:0.1,
-            speed:400
-          }
-
         })
        
         this.scroll.on('scroll', (pos) => {
@@ -145,10 +122,6 @@
 	            }
 	        }
           })
-
-       
-     
-        
 
         // 是否派发列表滚动开始的事件
         if (this.beforeScroll) {
@@ -175,6 +148,7 @@
       scrollToElement(){
       // 代理better-scroll的scrollToElement方法
       this.scroll &&this.scroll.scrollToElement.apply(this.scroll, arguments)
+
   	  }
   	},
     watch:{// 监听数据的变化，延时refreshDelay时间后调用refresh方法重新计算，保证滚动效果正常

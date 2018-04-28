@@ -9,7 +9,7 @@
   		<span v-show="title" class="title">
   			{{title}}
   		</span>
-	    <i class="iconfont icon-serialnumber menuline" @click="toggleMenu"></i>
+	    <i class="iconfont icon-menulines menuline" @click="toggleMenu"></i>
   	</div>
     
 	<div class="menu_list" v-show="menu" @click="menu=false">

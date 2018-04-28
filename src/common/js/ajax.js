@@ -44,8 +44,8 @@ export function getSeriesLine(data,callback) {
 	})
 }
 
-// 小视频
-export function getSmallVideo(data,callback) {
+//车友圈 小视频
+export function getVideo(data,callback) {
 	let url=process.env.API_HOST+'stream/api/news/feed/web/v47/';
 	axios.get(url,{params:data}).then((res)=>{
 		callback(res.data)

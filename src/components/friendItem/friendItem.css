@@ -1,0 +1,70 @@
+.itemBox {
+  border-bottom: 5px solid #eee;
+}
+
+.itemBox .head,
+.itemBox .content {
+  padding: 10px;
+}
+
+.itemBox .head img {
+  display: inline-block;
+  vertical-align: top;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.itemBox .head span {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 40px;
+  font-size: 16px;
+  color: #666;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.itemBox .content {
+  
+}
+
+.itemBox .content .word {
+  font-size: 16px;
+  color: #666;
+  line-height: 20px;
+}
+
+.itemBox .content .word .name {
+  color: #406599;
+}
+
+.itemBox .content .video_box {
+  width: 50%;
+  position: relative;
+  margin-top: 8px;
+}
+
+.itemBox .content .video_box .video_btn {
+  position: absolute;
+  font-size: 50px;
+  color: rgba(255,255,255,.9);
+  top: 50%;
+  left: 50%;
+  margin-top: -25px;
+  margin-left: -25px;
+}
+.itemBox .bottom{
+	border-top: 1px solid #ccc;
+	display: flex;
+	padding: 5px;
+	font-size: 16px;
+}
+.itemBox .bottom .count{
+	flex: 1;
+	text-align: center;
+}
+.itemBox .bottom .iconfont{
+	font-size: 24px;
+	color: #333;
+}
