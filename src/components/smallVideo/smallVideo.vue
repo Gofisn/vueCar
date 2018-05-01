@@ -55,10 +55,15 @@ export default {
     	let scrollTop=0;
         box.addEventListener('scroll', function () {
             scrollTop = box.scrollTop;
-            if (scrollTop + box.clientHeight >= box.scrollHeight) {
-              // console.log('scroll')
-              scop.loadMoreData='加载更多...';
-              scop.loadData(scop.videoItems[scop.videoItems.length-1].info.behot_time);
+
+            if (scrollTop + box.clientHeight+1 >= box.scrollHeight) {
+              if(scop.canload){
+              	console.log('load')
+                   scop.canload=false;
+              	   scop.loadMoreData='加载更多...';
+                   scop.loadData(scop.videoItems[scop.videoItems.length-1].info.behot_time);
+              	}
+              
             }
           })
           let startY;
@@ -71,6 +76,7 @@ export default {
               	if(scop.canload){
                    scop.canload=false;
               		scop.loadData();
+              		console.log('shuaxin')
               	}
                 
               }
@@ -113,6 +119,7 @@ export default {
 				if(data.length){
 					this.videoItems.push(...data)
 				}
+				// console.log(this.videoItems)
 			})
     	}
     }

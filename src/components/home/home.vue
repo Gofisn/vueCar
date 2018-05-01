@@ -24,7 +24,7 @@ import itemContent from '@/components/itemContent/itemContent.vue'
 import loading from '@/components/loading/loading.vue'
 import scroll from '@/components/scroll/scroll.vue'
 import detail from '@/components/articleDetail/articleDetail.vue'
-import {getHomeData,getHomeDetail} from '@/common/js/ajax.js'
+import {getNewsData,getNewsDetail} from '@/common/js/ajax.js'
 	export default{
 		data(){
 			return{
@@ -65,7 +65,7 @@ import {getHomeData,getHomeDetail} from '@/common/js/ajax.js'
 				}else{
 					this.dataNews=[];
 				}
-				getHomeData(paras,(res)=>{
+				getNewsData(paras,(res)=>{
 					this.canLoad=true;
 					this.loadMoreData='';
 					var data=res.data;
@@ -80,7 +80,7 @@ import {getHomeData,getHomeDetail} from '@/common/js/ajax.js'
 				this.loadDeatil(item.unique_id_str)
 			},
 			loadDeatil(id){
-				getHomeDetail({
+				getNewsDetail({
 						group_id:id
 					},(res)=>{
 						var data=res.data;
