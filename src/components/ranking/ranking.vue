@@ -4,7 +4,7 @@
   		<span  v-for="(item,index) in seriesArr" @click="chooseSeries(item)" :class="{active:type==item.type}">{{item.name}}</span>
   	</div>
   	<div class="type_title">
-  		
+  		<span v-for="item in typeObj[type]">{{item.name}}</span>
   	</div>
  </div>
 </template>
