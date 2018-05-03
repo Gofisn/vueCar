@@ -51,6 +51,13 @@ export function getVideo(data, callback) {
     callback(res.data)
   })
 }
+//排行榜
+export function getRanking(data, callback) {
+  let url = process.env.API_HOST + 'car_show/v1/get_rank/';
+  axios.get(url, { params: data }).then((res) => {
+    callback(res.data)
+  })
+}
 
 //服务类型
 export function getSevers(data, callback) {
